@@ -1,16 +1,19 @@
-package com.example.demoapp;
+package com.example.demoapp
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.example.demoapp.demo.Car
+import com.example.demoapp.demo.Engine
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-import android.os.Bundle;
-import android.widget.Toast;
-
-public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toast.makeText(this, "Hello World!", Toast.LENGTH_SHORT).show();
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
+    @Inject
+    lateinit var car: Car
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        car.getCar()
     }
 }
